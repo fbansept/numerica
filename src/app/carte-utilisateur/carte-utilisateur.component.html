@@ -1,4 +1,4 @@
-<mat-card class="example-card">
+<mat-card [class.carte-admin]="admin">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{ estHomme ? 'M.' : 'Me.' }}{{ nom }}</mat-card-title>
@@ -20,8 +20,16 @@
   </mat-card-content>
   <mat-card-actions>
     <button (click)="onEdit()" mat-raised-button color="primary">Editer</button>
-    <button (click)="OnDelete()" mat-raised-button color="warn">
+    <button
+      *ngIf="!admin; else templateImpossible"
+      (click)="OnDelete()"
+      mat-raised-button
+      color="warn"
+    >
       Supprimer
     </button>
+    <ng-template #templateImpossible>
+      <span>Impossible à supprimer</span>
+    </ng-template>
   </mat-card-actions>
 </mat-card>

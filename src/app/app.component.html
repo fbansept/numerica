@@ -1,9 +1,15 @@
-<app-carte-utilisateur
-  [estHomme]="true"
-  [admin]="true"
-  nom="franck"
-  (edit)="onEditUtilisateur($event)"
-  (delete)="onDeleteUtilisateur($event)"
-></app-carte-utilisateur>
-
-<app-carte-utilisateur nom="Sara" [estHomme]="false"></app-carte-utilisateur>
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let utilisateur of listeUtilisateur; let i = index">
+      <div *ngIf="utilisateur.estHomme" class="col-4">
+        <app-carte-utilisateur
+          [estHomme]="utilisateur.estHomme"
+          [admin]="utilisateur.admin"
+          [nom]="utilisateur.nom"
+          (edit)="onEditUtilisateur($event, i)"
+          (delete)="onDeleteUtilisateur($event)"
+        ></app-carte-utilisateur>
+      </div>
+    </ng-container>
+  </div>
+</div>

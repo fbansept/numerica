@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Utilisateur } from './Utilisateur';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,31 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  onEditUtilisateur(nomUtilisateur: string) {
-    alert("Edition " + nomUtilisateur)
+
+  public listeUtilisateur: Utilisateur[] = [
+    {
+      nom: "Franck",
+      estHomme: true,
+      admin: true,
+      pays: {
+        nom: "France",
+        iso: "FR"
+      }
+    },
+    {
+      nom: "Tom",
+      estHomme: false,
+      admin: false
+    },
+    {
+      nom: "Sara",
+      estHomme: true,
+      admin: false
+    }
+  ]
+
+  onEditUtilisateur(nomUtilisateur: string, index: number) {
+    alert("Edition " + nomUtilisateur + ' ' + index)
   }
 
   onDeleteUtilisateur(nomUtilisateur: string) {

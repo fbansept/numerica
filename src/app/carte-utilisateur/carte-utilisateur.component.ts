@@ -1,12 +1,14 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
+
 @Component({
   selector: 'app-carte-utilisateur',
   templateUrl: './carte-utilisateur.component.html',
   styleUrls: ['./carte-utilisateur.component.scss']
 })
 export class CarteUtilisateurComponent implements OnInit {
-
+  
+  taille: number = 0;
 
   @Input()
   public nom: string = ""
