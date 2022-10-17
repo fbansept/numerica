@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'numerica';
+
+  onEditUtilisateur(nomUtilisateur: string) {
+    alert("Edition " + nomUtilisateur)
+  }
+
+  onDeleteUtilisateur(nomUtilisateur: string) {
+    alert("Suppression " + nomUtilisateur)
+  }
+
 }
