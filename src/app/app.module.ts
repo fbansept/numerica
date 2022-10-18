@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PageListeUtilisateurComponent } from './page-liste-utilisateur/page-liste-utilisateur.component';
 import { PageEditionUtilisateurComponent } from './page-edition-utilisateur/page-edition-utilisateur.component';
 import { PageListeArticleComponent } from './page-liste-article/page-liste-article.component';
+import { PageAfficherArticleComponent } from './page-afficher-article/page-afficher-article.component';
+import { PageNonTrouveComponent } from './page-non-trouve/page-non-trouve.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { PageListeArticleComponent } from './page-liste-article/page-liste-artic
     CarteUtilisateurComponent,
     PageListeUtilisateurComponent,
     PageEditionUtilisateurComponent,
-    PageListeArticleComponent
+    PageListeArticleComponent,
+    PageAfficherArticleComponent,
+    PageNonTrouveComponent
   ],
   imports: [
     BrowserModule,

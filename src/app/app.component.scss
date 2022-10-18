@@ -1,5 +1,12 @@
 .test {
-    width: 100px;
-    height: 100px;
-    background-color: red;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+
+.lien-courant {
+  &.nav-link,
+  &.nav-link:focus {
+    color: red;
+  }
 }
