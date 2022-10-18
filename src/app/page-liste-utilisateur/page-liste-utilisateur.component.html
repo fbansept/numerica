@@ -1,0 +1,16 @@
+<div class="container">
+
+  <div class="row">
+    <ng-container *ngFor="let utilisateur of listeUtilisateur; let i = index">
+      <div *ngIf="utilisateur.estHomme" class="col-4">
+        <app-carte-utilisateur
+          [estHomme]="utilisateur.estHomme"
+          [admin]="utilisateur.admin"
+          [nom]="utilisateur.nom"
+          (edit)="onEditUtilisateur($event, i)"
+          (delete)="onDeleteUtilisateur($event)"
+        ></app-carte-utilisateur>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -9,11 +9,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
 import { HttpClientModule } from '@angular/common/http';
+import { PageListeUtilisateurComponent } from './page-liste-utilisateur/page-liste-utilisateur.component';
+import { PageEditionUtilisateurComponent } from './page-edition-utilisateur/page-edition-utilisateur.component';
+import { PageListeArticleComponent } from './page-liste-article/page-liste-article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarteUtilisateurComponent
+    CarteUtilisateurComponent,
+    PageListeUtilisateurComponent,
+    PageEditionUtilisateurComponent,
+    PageListeArticleComponent
   ],
   imports: [
     BrowserModule,
