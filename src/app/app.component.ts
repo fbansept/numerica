@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { Utilisateur } from './Utilisateur';
 
 @Component({
@@ -6,7 +7,17 @@ import { Utilisateur } from './Utilisateur';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+
+  public listeArticle: any[] = [];
+
+  constructor(private httpClient : HttpClient){}
+
+  ngOnInit(): void {
+    this.httpClienth
+      .get("https://dummyjson.com/products?limit=10")
+      .subscribe((listeArticle: any) => this.listeArticle = listeArticle.products)
+  }
 
 
   public listeUtilisateur: Utilisateur[] = [

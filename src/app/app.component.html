@@ -1,4 +1,10 @@
 <div class="container">
+  <ul>
+    <li *ngFor="let article of listeArticle">
+      {{ article.title }}
+    </li>
+  </ul>
+
   <div class="row">
     <ng-container *ngFor="let utilisateur of listeUtilisateur; let i = index">
       <div *ngIf="utilisateur.estHomme" class="col-4">
