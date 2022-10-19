@@ -1,1 +1,25 @@
-<p>page-edition-utilisateur works!</p>
+<form (submit)="onEnregistrerUtilisateur()" [formGroup]="formulaire">
+  <mat-form-field appearance="fill">
+    <mat-label>Nom</mat-label>
+    <input matInput formControlName="nom" />
+    <mat-error *ngIf="formulaire.get('nom')?.hasError('required')">
+      Le champ est obligatoire
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" />
+    <mat-error *ngIf="formulaire.get('email')?.hasError('required')">
+      Le champ est obligatoire
+    </mat-error>
+    <mat-error *ngIf="formulaire.get('email')?.hasError('pattern')">
+      Le format de l'email n'est pas respecté
+    </mat-error>
+    <mat-error *ngIf="formulaire.get('email')?.hasError('emailExist')">
+      Cet email est déjà utilisé
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button [disabled]="!formulaire.valid">Enregistrer</button>
+</form>

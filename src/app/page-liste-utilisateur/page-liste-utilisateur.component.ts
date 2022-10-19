@@ -12,6 +12,7 @@ export class PageListeUtilisateurComponent implements OnInit {
   public listeUtilisateur: Utilisateur[] = [
     {
       nom: "Franck",
+      email: "bansept.franck@gmail.com",
       estHomme: true,
       admin: true,
       pays: {
@@ -21,11 +22,13 @@ export class PageListeUtilisateurComponent implements OnInit {
     },
     {
       nom: "Tom",
+      email: "tom@gmail.com",
       estHomme: false,
       admin: false
     },
     {
       nom: "Sara",
+      email: "sara@gmail.com",
       estHomme: true,
       admin: false
     }
