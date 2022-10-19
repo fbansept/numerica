@@ -17,6 +17,7 @@ import { PageListeArticleComponent } from './page-liste-article/page-liste-artic
 import { PageAfficherArticleComponent } from './page-afficher-article/page-afficher-article.component';
 import { PageNonTrouveComponent } from './page-non-trouve/page-non-trouve.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PageConnexionComponent } from './page-connexion/page-connexion.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PageEditionUtilisateurComponent,
     PageListeArticleComponent,
     PageAfficherArticleComponent,
-    PageNonTrouveComponent
+    PageNonTrouveComponent,
+    PageConnexionComponent
   ],
   imports: [
     BrowserModule,

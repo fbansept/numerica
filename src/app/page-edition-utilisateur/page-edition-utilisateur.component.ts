@@ -1,6 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { FausseValidationEmailService } from '../services/fausse-validation-email.service';
+import { TestTransfertService } from '../services/test-transfert.service';
+import { Utilisateur } from '../Utilisateur';
 
 @Component({
   selector: 'app-page-edition-utilisateur',
@@ -9,11 +13,9 @@ import { FausseValidationEmailService } from '../services/fausse-validation-emai
 })
 export class PageEditionUtilisateurComponent implements OnInit {
 
-  public nomFourni: string = "Franck"
-
   public formulaire: FormGroup = this.formBuilder.group(
     {
-      nom: ["", [Validators.required]],
+      pseudo: ["", [Validators.required]],
       email: ["", {
         validators:
           [
@@ -27,21 +29,36 @@ export class PageEditionUtilisateurComponent implements OnInit {
     }
   );
 
-  constructor(private formBuilder: FormBuilder, private fakeValidator: FausseValidationEmailService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private fakeValidator: FausseValidationEmailService,
+    private httpClient: HttpClient,
+    private route: ActivatedRoute
+  ) { }
+
+  public utilisateur: Utilisateur | undefined;
 
   ngOnInit(): void {
 
-    // this.fakeValidator.emailExists("bansept.franck@gmail.com")
-    //   .subscribe(exist => console.log(exist))
+    this.route.params
+      .subscribe((parametres: any) => {
+        this.httpClient.get("http://localhost:8080/utilisateur/" + parametres.id)
+          .subscribe((utilisateur: any) => {
+            this.utilisateur = utilisateur
+            this.formulaire.patchValue({ "pseudo": this.utilisateur?.pseudo })
+          })
+      })
 
-    this.fakeValidator._nombreRequete.subscribe(countReq =>
-      console.log(countReq)
-    )
   }
 
   onEnregistrerUtilisateur() {
-    if (this.formulaire.valid) {
-      console.log(this.formulaire.value)
+    if (this.formulaire.valid && this.utilisateur) {
+
+      this.utilisateur.pseudo = this.formulaire.value.pseudo
+
+      this.httpClient
+        .put("http://localhost:8080/utilisateur", this.utilisateur)
+        .subscribe(resultat => console.log(resultat))
     }
   }
 

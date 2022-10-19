@@ -1,0 +1,16 @@
+<form (submit)="onConnexion()" [formGroup]="formulaire">
+  <mat-form-field appearance="fill">
+    <mat-label>Nom</mat-label>
+    <input matInput formControlName="pseudo" />
+    <mat-error *ngIf="formulaire.get('pseudo')?.hasError('required')">
+      Le champ est obligatoire
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput type="password" formControlName="password" />
+  </mat-form-field>
+
+  <button mat-raised-button>Se connecter</button>
+</form>

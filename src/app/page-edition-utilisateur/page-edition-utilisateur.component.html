@@ -1,8 +1,8 @@
 <form (submit)="onEnregistrerUtilisateur()" [formGroup]="formulaire">
   <mat-form-field appearance="fill">
     <mat-label>Nom</mat-label>
-    <input matInput formControlName="nom" />
-    <mat-error *ngIf="formulaire.get('nom')?.hasError('required')">
+    <input matInput formControlName="pseudo" />
+    <mat-error *ngIf="formulaire.get('pseudo')?.hasError('required')">
       Le champ est obligatoire
     </mat-error>
   </mat-form-field>
