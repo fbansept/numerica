@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ApplicationRef, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Utilisateur } from '../Utilisateur';
 
 @Component({
@@ -9,44 +11,21 @@ import { Utilisateur } from '../Utilisateur';
 export class PageListeUtilisateurComponent implements OnInit {
 
 
-  public listeUtilisateur: Utilisateur[] = [
-    {
-      nom: "Franck",
-      email: "bansept.franck@gmail.com",
-      estHomme: true,
-      admin: true,
-      pays: {
-        nom: "France",
-        iso: "FR"
-      }
-    },
-    {
-      nom: "Tom",
-      email: "tom@gmail.com",
-      estHomme: false,
-      admin: false
-    },
-    {
-      nom: "Sara",
-      email: "sara@gmail.com",
-      estHomme: true,
-      admin: false
-    }
-  ]
+  public listeUtilisateur: Utilisateur[] = []
 
-  constructor() { }
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+    this.httpClient.get("http://localhost:8080/utilisateurs")
+      .subscribe((listeUtilisateur: any) => this.listeUtilisateur = listeUtilisateur)
   }
 
-
-
-  onEditUtilisateur(nomUtilisateur: string, index: number) {
-    alert("Edition " + nomUtilisateur + ' ' + index)
+  onEditUtilisateur(utilisateur: Utilisateur, index: number) {
+    this.router.navigateByUrl("edition-utilisateur/"+ utilisateur.id)
   }
 
-  onDeleteUtilisateur(nomUtilisateur: string) {
-    alert("Suppression " + nomUtilisateur)
+  onDeleteUtilisateur(utilisateur: Utilisateur,) {
+    
   }
 
 }

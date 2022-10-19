@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn } from '@angular/forms';
-import { BehaviorSubject, delay, map, Observable, of } from 'rxjs';
+import { BehaviorSubject, delay, map, Observable, of, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class FausseValidationEmailService {
 
   public uniqueEmailValidator(): AsyncValidatorFn {
 
-    return (control: AbstractControl): Observable<any> => {
+    return (control: AbstractControl): any => {
       return this.emailExists(control.value).pipe(
         map((exists) => (exists ? { emailExists: true } : null))
       );

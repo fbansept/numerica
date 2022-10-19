@@ -1,7 +1,9 @@
 <mat-card [class.carte-admin]="admin">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{ estHomme ? 'M.' : 'Me.' }}{{ nom }}</mat-card-title>
+    <mat-card-title>
+      {{ utilisateur?.estHomme ? 'M.' : 'Me.' }}{{ utilisateur?.pseudo }}
+    </mat-card-title>
     <mat-card-subtitle>
       {{ admin ? 'Administrateur' : 'Simple utilisateur' }}
     </mat-card-subtitle>

@@ -1,4 +1,6 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Role } from '../Role';
+import { Utilisateur } from '../Utilisateur';
 
 
 @Component({
@@ -6,36 +8,41 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   templateUrl: './carte-utilisateur.component.html',
   styleUrls: ['./carte-utilisateur.component.scss']
 })
-export class CarteUtilisateurComponent implements OnInit {
-
-  taille: number = 0;
+export class CarteUtilisateurComponent implements OnInit, OnChanges {
 
   @Input()
-  public nom: string = ""
-
-  @Input()
-  public estHomme: boolean | undefined = false
-
-  @Input()
-  public admin?: boolean = false
+  public utilisateur: Utilisateur | undefined;
 
   @Output()
-  public delete: EventEmitter<string> = new EventEmitter()
+  public delete: EventEmitter<Utilisateur> = new EventEmitter()
 
   @Output()
-  public edit: EventEmitter<string> = new EventEmitter()
+  public edit: EventEmitter<Utilisateur> = new EventEmitter()
 
+  public admin: boolean = false;
 
   constructor() { }
 
+
+  ngOnChanges(changes: SimpleChanges): void {
+
+    this.admin = changes['utilisateur']
+      .currentValue
+      .listeRole
+      .filter((role: Role) => role.nom == "ROLE_ADMIN").length > 0
+
+  }
+
   ngOnInit(): void {
+  
   }
 
   OnDelete() {
-    this.delete.emit(this.nom);
+    this.delete.emit(this.utilisateur);
   }
   onEdit() {
-    this.edit.emit(this.nom);
+    this.edit.emit(this.utilisateur);
+
   }
 
 }

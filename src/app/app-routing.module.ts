@@ -9,6 +9,7 @@ import { PageNonTrouveComponent } from './page-non-trouve/page-non-trouve.compon
 const routes: Routes = [
   { path: "liste-utilisateurs", component: PageListeUtilisateurComponent },
   { path: "edition-utilisateur", component: PageEditionUtilisateurComponent },
+  { path: "edition-utilisateur/:id", component: PageEditionUtilisateurComponent },
   { path: "liste-articles", component: PageListeArticleComponent },
   { path: "article/:id", component: PageAfficherArticleComponent },
   { path: "", redirectTo: "liste-utilisateurs", pathMatch: 'full' },

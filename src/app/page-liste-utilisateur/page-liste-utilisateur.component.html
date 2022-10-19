@@ -1,12 +1,9 @@
 <div class="container">
-
   <div class="row">
     <ng-container *ngFor="let utilisateur of listeUtilisateur; let i = index">
-      <div *ngIf="utilisateur.estHomme" class="col-4">
+      <div class="col-4">
         <app-carte-utilisateur
-          [estHomme]="utilisateur.estHomme"
-          [admin]="utilisateur.admin"
-          [nom]="utilisateur.nom"
+          [utilisateur]="utilisateur"
           (edit)="onEditUtilisateur($event, i)"
           (delete)="onDeleteUtilisateur($event)"
         ></app-carte-utilisateur>

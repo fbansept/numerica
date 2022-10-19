@@ -1,9 +1,11 @@
 import { Pays } from "./Pays";
+import { Role } from "./Role";
 
 export interface Utilisateur {
-    nom: string,
+    id: number,
+    pseudo: string,
     email: string,
     estHomme: boolean,
-    admin?: boolean,
+    listeRole: Role[],
     pays?: Pays
 }
